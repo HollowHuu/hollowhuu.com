@@ -5,11 +5,13 @@ class GithubCard {
     description: string;
     html_url: string;
     language: string;
+    color: string;
     constructor(props: GithubCardProps) {
         this.name = props.name;
         this.description = props.description;
         this.html_url = props.html_url;
         this.language = props.language;
+        this.color = LanguageColors.get(props.language) || '#fff';
     }
 }
 
@@ -20,6 +22,13 @@ interface GithubCardProps {
     language: string;
 }
 
+const LanguageColors = new Map<string, string>([
+    ['JavaScript', '#f1e05a'],
+    ['TypeScript', '#2b7489'],
+    ['HTML', '#e34c26'],
+    ['Rust', '#dea584'],
+    ['C#', '#178600'],
+])
 
 export default function GithubCards({ id }: { id: string }) {
     const [mounted, setMounted] = useState(false);
@@ -34,13 +43,17 @@ export default function GithubCards({ id }: { id: string }) {
                     name: id
                 }
             }).then(res => res.json());
+            
+            if(!data.name) return;
+
             setRepo(new GithubCard(data))
         }
         SetRepo();
 
     }, []);
 
-    if(!mounted) return (<div></div>)
+    if(!repo) return
+    if(!mounted) return
     return (
         <div>
             <svg key={repo?.name} width={400} height={120}>
@@ -61,7 +74,7 @@ export default function GithubCards({ id }: { id: string }) {
                 </g>
                 {/* Lang */}
                 <g transform='translate(20, 110) scale(.8)'>
-                    <circle cx={0} cy={-5} r={6} className='fill-blue-500'></circle>
+                    <circle cx={0} cy={-5} r={6} style={{fill: repo?.color}}></circle>
                     <text x={15} className='fill-slate-200'>{repo?.language}</text>
                 </g>
             </svg>

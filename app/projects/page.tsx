@@ -17,8 +17,7 @@ export default function Projects() {
         if(repos.length > 0) return;
         async function FetchRepos() {
             let data = await fetch(`/api/user`).then(res => res.json());
-            let repoList = data.repos.map((repo: any) => repo.name);
-            console.log({data})
+            let repoList = data.map((repo: any) => repo.name);
             setRepos(repoList);
             console.log({repoList})
         }
@@ -27,16 +26,24 @@ export default function Projects() {
 
     if(!mounted) return (<div></div>)
     return (
-        <div> 
-            {repos.map(repo => {
-                return (
-                    <main key={repo} className="flex m-auto justify-center mt-2">
-                        <GithubCards id={repo}/>
-                    </main>
-            )
-        })}
+        <div className="flex flex-col justify-center items-center">
+            <h1 className="text-4xl font-bold">Projects</h1>
+            <p className="text-xl">Here are some of my projects.</p>
+            <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center">
+                    <div className="flex justify-center">
+                        <div className="align-center m-auto grid grid-cols-2 gap-4"> 
+                            {repos.map(repo => {
+                                return (
+                                    <GithubCards key={repo} id={repo}/>
+                            )
+                        }).filter((repo) => repo.props.id != "HollowHuu")}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     )
 
-}
+} 

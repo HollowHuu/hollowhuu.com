@@ -10,10 +10,10 @@ export async function GET() {
         }
     }).then(res => res.json()) as Repos[];
 
-    console.log(res);
-    return Response.json({
-        repos: res.map((repo)  => ({
-            name: repo.name,
-        }))
-    })
+    let repos = res.map((repo) => ({
+        name: repo.name,
+    }))
+
+    console.log({repos});
+    return Response.json(repos)
 }
