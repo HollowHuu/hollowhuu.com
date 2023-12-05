@@ -53,7 +53,7 @@ export default function GithubCards({ id }: { id: string }) {
                     </g>
                 </g>
                 <g transform='translate(70, 40) scale(1.5)'>
-                    <text fill='#fff' className='fill-white font-3xl block' x={0} y={0}><a className='text-white' href={repo?.html_url}>{repo?.name}</a></text>
+                    <text fill='#fff' className='fill-white font-3xl block' x={0} y={0}><a className='text-white fill-white' href={repo?.html_url}>{repo?.name}</a></text>
                 </g>
                 {/* Description */}
                 <g transform='translate(20, 80) scale(.8)'>
