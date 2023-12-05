@@ -1,3 +1,6 @@
+interface Repos {
+    name: string;
+}
 
 // Return all repos from my Github account
 export async function GET() {
@@ -5,11 +8,11 @@ export async function GET() {
         headers: {
             'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
         }
-    }).then(res => res.json());
+    }).then(res => res.json()) as Repos[];
 
     console.log(res);
     return Response.json({
-        repos: res.map(repo => ({
+        repos: res.map((repo)  => ({
             name: repo.name,
         }))
     })
