@@ -16,7 +16,7 @@ export async function GET() {
     // }))
 
     // trying same thing with foreach
-    if(!Array.isArray(res)) return;
+    if(!Array.isArray(res)) return Response.json({error: 'not an array'}); // this is never hit locally, but is on vercel
     let repos: Repo[] = [];
     res.forEach((repo) => {
         repos.push({name: repo.name});
