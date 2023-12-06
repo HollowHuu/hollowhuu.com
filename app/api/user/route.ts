@@ -16,7 +16,7 @@ export async function GET() {
     // }))
 
     // trying same thing with foreach
-    if(!Array.isArray(res)) return Response.error();
+    if(!Array.isArray(res)) return;
     let repos: Repo[] = [];
     res.forEach((repo) => {
         repos.push({name: repo.name});
