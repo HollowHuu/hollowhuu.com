@@ -1,5 +1,6 @@
 interface Repo {
-    name: string;
+    name?: string;
+    message?: string;
 }
 
 // Return all repos from my Github account
@@ -8,7 +9,12 @@ export async function GET() {
         headers: {
             'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
         }
-    }).then(res => res.json()) as Repo[];
+    }).then(res => res.json());
+
+    console.log({res});
+    if (!res) return Response.json({error: 'no repos found'});
+    if (res.message) return Response.json({error: res.message});
+    
 
     // Vercel complains about this, works fine locally.
     // let repos = res.map((repo) => ({

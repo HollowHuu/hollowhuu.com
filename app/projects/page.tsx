@@ -17,6 +17,7 @@ export default function Projects() {
         if(repos.length > 0) return;
         async function FetchRepos() {
             let data = await fetch(`/api/user`).then(res => res.json());
+            if (data.error) return console.error(data.error);
             let repoList = data.map((repo: any) => repo.name);
             setRepos(repoList);
             console.log({repoList})
