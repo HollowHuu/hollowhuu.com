@@ -48,9 +48,11 @@ export default function GithubCards({ id }: { id: string }) {
 
             setRepo(new GithubCard(data))
         }
-        SetRepo();
 
-    }, []);
+        if(!repo) SetRepo();
+        
+
+    }, [id, repo]);
 
     if(!repo) return
     if(!mounted) return

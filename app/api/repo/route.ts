@@ -9,13 +9,12 @@ export async function GET() {
         headers: {
             'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`
         }
-    })
-    let data = await res.json();
+    }).then(res => res.json());
 
     return Response.json({
-        name: data.name,
-        description: data.description,
-        html_url: data.html_url,
-        language: data.language
+        name: res.name,
+        description: res.description,
+        html_url: res.html_url,
+        language: res.language
     })
 }

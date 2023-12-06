@@ -11,23 +11,16 @@ export async function GET() {
         }
     }).then(res => res.json());
 
-    console.log({res});
     if (!res) return Response.json({error: 'no repos found'});
     if (res.message) return Response.json({error: res.message});
     
 
-    // Vercel complains about this, works fine locally.
-    // let repos = res.map((repo) => ({
-    //     name: repo.name,
-    // }))
-
-    // trying same thing with foreach
+    // Vercel doesn't like me, but I don't like it either
     if(!Array.isArray(res)) return Response.json({error: 'not an array'}); // this is never hit locally, but is on vercel
     let repos: Repo[] = [];
     res.forEach((repo) => {
         repos.push({name: repo.name});
     });
 
-    console.log({repos});
     return Response.json(repos)
 }
