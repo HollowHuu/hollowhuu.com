@@ -27,8 +27,8 @@ export default function Header() {
                     <span className=''>Projects</span>
                 </a>
 
-                <a href="/about" className='p-5 hover:underline'>
-                    <span>About</span>
+                <a href="/experience" className='p-5 hover:underline'>
+                    <span>Experience</span>
                 </a>
 
                 <a href="/contact" className='p-5 hover:underline'>
