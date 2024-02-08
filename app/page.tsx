@@ -55,7 +55,22 @@ export default function Home() {
       <div className='w-6/12 my-10 border-2 border-slate-500 rounded bg-red-900/75 p-5'>
         {/* About Me */}
         <h2 className="text-2xl font-bold">About Me</h2>
-        <p className="text-lg">I&apos;m an 18 year old Data Technician student from Denmark. I currently </p>
+        <p className="text-lg">Hi, I&apos;m an 18 year old Data Technician student from Denmark.</p>
+        <p>I primarily work with web development, but I also have some experience making CRUD applications and RESTful APIs.</p>
+
+        <br />
+        <p>
+          I currently work equally with both front-end and back-end development, but I would like to specialize in back-end development in the future.
+        </p>
+      </div>
+
+      { /* Other hobbies */ }
+      <div className='w-6/12 border-2 border-slate-500 rounded bg-red-900/75 p-5'>
+        <h2 className="text-2xl font-bold">Hobbies</h2>
+        <p className="text-lg">
+          While I do spend a lot of time programming, I also have other hobbies. <br />
+          I enjoy playing rhythm games, such as osu! and Beat Saber, and the occasional game of Valorant.
+        </p>
       </div>
 
     </main>
